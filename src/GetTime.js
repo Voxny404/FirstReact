@@ -31,7 +31,7 @@ class GetTime extends React.Component {
     setInterval(() => {
       this.setState({time: this.timeFu()})
     }, 1000)
-    console.log("TimeComponent Mounted...")
+    //console.log("TimeComponent Mounted...")
   }
 
 }

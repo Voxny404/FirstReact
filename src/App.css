@@ -7,11 +7,14 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+  filter: grayscale(100%);
+  filter: drop-shadow(8px 8px 10px black);
+  
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 80s linear;
   }
 }
 
