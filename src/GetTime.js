@@ -11,7 +11,7 @@ class GetTime extends React.Component {
 
   render(){
     return(
-      <div> { this.state.time } </div>
+      <div style={{color: '#a4bdba',fontFamily: "Alfa Slab One"}}> { this.state.time } </div>
     );
   }
 
