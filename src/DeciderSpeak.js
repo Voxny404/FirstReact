@@ -2,8 +2,9 @@ import React from "react";
 import './App.css';
 import Button from 'react-bootstrap/Button';
 import SpeakText from './SpeakText'
+import SpeakTextGerman from './SpeakTextGerman'
 import CommandText from './CommandText'
-import {funcTime, speak} from './Tasks/functionSet';
+import {funcTime, speak,speakGerman} from './Tasks/functionSet';
 
 class DeciderSpeak extends React.Component {
   constructor(props){
@@ -33,6 +34,19 @@ class DeciderSpeak extends React.Component {
       this.setState({displayText: ' '});
     }, 5000)
   }
+  speakTextGerman = (getGermanText) => {
+    let returnTextGerman = getGermanText
+    this.magicSpeakerGerman(returnTextGerman)
+  }
+  speakText = (getText) => {
+    let returnText = getText
+    this.magicSpeaker(returnText)
+  }
+  magicSpeakerGerman = (returnTextGerman) => {
+    speakGerman(returnTextGerman)
+    this.setState({displayText: returnTextGerman});
+    this.resetText()
+  }
   magicSpeaker = (returnText) =>{
     speak(returnText)
     this.setState({displayText: returnText});
@@ -43,13 +57,13 @@ class DeciderSpeak extends React.Component {
     let returnText
 
 
-    if(!CommandText.allcommands.match(textFixed) === false && textFixed.length >= 3){
+    if(!CommandText.allcommands.match(textFixed) === false && textFixed.length >= 4){
 
       if(textFixed){
+
         //help
         if(CommandText.help.includes(textFixed)&&CommandText.help.indexOf(textFixed)){
-          returnText = SpeakText.help
-          this.magicSpeaker(returnText)
+           this.speakText(SpeakText.help)
         }
         //displays all commands
         if(CommandText.commands.includes(textFixed)&&CommandText.commands.indexOf(textFixed)){
@@ -165,6 +179,110 @@ class DeciderSpeak extends React.Component {
           returnText = 'it is ' + funcTime().replace(/:/, ' ')
           speak(returnText)
           this.setState({displayText: "It is "+funcTime()});
+          this.resetText()
+        }
+        /////////////////////////////////////////
+        //german section
+        if(CommandText.hilfe.includes(textFixed)&&CommandText.hilfe.indexOf(textFixed)){
+          this.speakTextGerman(SpeakTextGerman.hilfe)
+        }
+        //displays all commands
+        if(CommandText.befehle.includes(textFixed)&&CommandText.befehle.indexOf(textFixed)){
+          this.speakTextGerman(SpeakTextGerman.listCommands)
+          this.setState({divContainerStyle: 'display'})
+          this.setState({displayCommands: CommandText.allcommands.replace(/,/gi, " # ")});
+        }
+        //disable command display
+        if(CommandText.befehleDisable.includes(textFixed)&&CommandText.befehleDisable.indexOf(textFixed)){
+          this.speakTextGerman(SpeakTextGerman.listCommandsD)
+          this.setState({divContainerStyle: 'hidden'})
+          this.setState({displayCommands: CommandText.allcommands.replace(/,/gi, "\r\n")});
+        }
+        //what's your name
+        if(CommandText.wasIstDeinName.includes(textFixed)&&CommandText.wasIstDeinName.indexOf(textFixed)){
+          this.speakTextGerman(SpeakTextGerman.name)
+        }
+        //how old are you
+        if(CommandText.wieAlt.includes(textFixed)&&CommandText.wieAlt.indexOf(textFixed)){
+          this.speakTextGerman(SpeakTextGerman.howOld)
+        }
+        //whatever response
+        if(CommandText.wasAuchImmer.includes(textFixed)&&CommandText.wasAuchImmer.indexOf(textFixed)){
+          this.speakTextGerman(SpeakTextGerman.whatEver)
+        }
+        //sing for me
+        if(CommandText.singen.includes(textFixed)&&CommandText.singen.indexOf(textFixed)){
+          this.speakTextGerman(SpeakTextGerman.singing)
+        }
+        //speak some german
+        if(CommandText.sprichEnglish.includes(textFixed)&&CommandText.sprichEnglish.indexOf(textFixed)){
+          this.speakTextGerman(SpeakTextGerman.speakGerman)
+        }
+        //who are you
+        if(CommandText.werBistDu.includes(textFixed)&&CommandText.werBistDu.indexOf(textFixed)){
+          this.speakTextGerman(SpeakTextGerman.whoA)
+        }
+        //how are you
+        if(CommandText.wieGehtEsDir.includes(textFixed)&&CommandText.wieGehtEsDir.indexOf(textFixed)){
+          this.speakTextGerman(SpeakTextGerman.howA)
+        }
+        //hello
+        if(CommandText.hallo.includes(textFixed)&&CommandText.hallo.indexOf(textFixed)){
+          this.speakTextGerman(SpeakTextGerman.HelloA)
+        }
+        //music
+        if(CommandText.musik.includes(textFixed)&&CommandText.musik.indexOf(textFixed)){
+          setTimeout(() => {
+            this.playVideo()
+          }, 5000)
+          this.speakTextGerman(SpeakTextGerman.musicP)
+        }
+        //music stop
+        if(CommandText.stopMusik.includes(textFixed)&&CommandText.stopMusik.indexOf(textFixed)){
+          this.stopVideo()
+
+          setTimeout(() => {
+            this.speakTextGerman(SpeakTextGerman.musicS)
+          }, 1000)
+        }
+        //i am fine
+        if(CommandText.mirGehtEsgut.includes(textFixed)&&CommandText.mirGehtEsgut.indexOf(textFixed)){
+          this.speakTextGerman(SpeakTextGerman.fineA)
+        }
+        //jokes
+        if(CommandText.sagEinenWitz.includes(textFixed)&&CommandText.sagEinenWitz.indexOf(textFixed)){
+          let jokeIndex = Math.floor(Math.random() * SpeakText.jokeA.length)
+          returnText = SpeakTextGerman.jokeA[jokeIndex]
+          speakGerman(returnText)
+          this.setState({displayText: returnText});
+          setTimeout(() => {
+            this.resetText()
+          }, 3000)
+        }
+        //who is your creator
+        if(CommandText.werIstDeinErsteller.includes(textFixed)&&CommandText.werIstDeinErsteller.indexOf(textFixed)){
+          this.speakTextGerman(SpeakTextGerman.creator)
+        }
+        //who is voxny
+        if(CommandText.werIstVoxny.includes(textFixed)&&CommandText.werIstVoxny.indexOf(textFixed)){
+          this.speakTextGerman(SpeakTextGerman.creatorA)
+          this.setState({displayText: "https://github.com/Voxny404"});
+          setTimeout(() => {
+            this.resetText()
+          }, 5000)
+
+        }
+        //activate power mode
+        if(CommandText.activirePowerMode.includes(textFixed)&&CommandText.activirePowerMode.indexOf(textFixed)){
+          this.speakTextGerman(SpeakTextGerman.PowerMA)
+          this.setState({displayText: 'Activating power mode!......'});
+          this.resetText()
+        }
+        //time
+        if(CommandText.zeit.includes(textFixed)&&CommandText.zeit.indexOf(textFixed)){
+          returnText = 'Es ist ' + funcTime().replace(/:/, 'Uhr ')
+          speakGerman(returnText)
+          this.setState({displayText: "Es ist "+funcTime()+' Uhr'});
           this.resetText()
         }
       }

@@ -29,7 +29,7 @@ class App extends React.Component {
           <GetTime />
           <br />
           <DeciderSpeak/>
-
+          
           <p style={{fontSize:'small',color: 'gray',fontWeight: 'bold',opacity: '0.2'}}>Voxny404 © 2020 </p>
         </header>
       </div>

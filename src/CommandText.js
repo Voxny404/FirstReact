@@ -1,10 +1,12 @@
 
+// needs to have at least 4 characters and all characters need to be toLowerCase
 
+//english
 let   help              = exports.help              = ['','help me','help','please help',"please help me","what can you do?","what can you do"],
       whatIsYourName    = exports.whatIsYourName    = ["","what's your name","what is your name","name"],
       whoAreYou         = exports.whoAreYou         = ["","who are you"],
       howAreYou         = exports.howAreYou         = ["",'how are you','how are you doing'],
-      hello             = exports.hello             = ["","hello","hi","hallo","ola","hey there"],
+      hello             = exports.hello             = ["","hello","hey","ola","hey there"],
       music             = exports.music             = ["","music","play music","play some music"],
       stopMusic         = exports.stopMusic         = ["",'stop music','music stop'],
       iAmFine           = exports.iAmFine           = ["","i'm fine","i'm good","i am fine","i am good"],
@@ -22,7 +24,30 @@ let   help              = exports.help              = ['','help me','help','plea
       whatEver          = exports.whatEver          = ["","whatever"],
       howOld            = exports.howOld            = ["","how old are you","how old are you?"]
 
-let theCommands = [
+//german
+let hilfe               = exports.hilfe                = ['','hilfe','hilf mir','bitte helfe mir',"was kannst du","was kannst du ?"],
+    wasIstDeinName      = exports.wasIstDeinName       = ["","wie heißt du", "wie heißt du?", "name"],
+    werBistDu           = exports.werBistDu            = ["","wer bist du","wer bist du?"],
+    wieGehtEsDir        = exports.wieGehtEsDir         = ["",'wie geht es dir?','wie gehts?','wie geht es dir','wie gehts'],
+    hallo               = exports.hallo                = ["","hallo","servus","hey hey"],
+    musik               = exports.musik                = ["","musik","spiel music","spiele music","spiele etwas musik"],
+    stopMusik           = exports.stopMusik            = ["",'stop musik','musik stop'],
+    mirGehtEsgut        = exports.mirGehtEsgut         = ["","mir geht es gut","gut","es geht","super",'blendend'],
+    sagEinenWitz        = exports.sagEinenWitz         = ["","erzähle mir einen witz","witz"],
+    werIstDeinErsteller = exports.werIstDeinErsteller  = ["","wer ist dein schöpfer", "wer hat dich gebaut", "wer hat dich erschaffen", "wer hat dich erschaffen?","wer hat dich erstellt?","wer hat dich erstellt"],
+    werIstVoxny         = exports.werIstVoxny          = ["","wer ist voxny","wer ist jessica","wer ist voxny?","wer ist jessica?"],
+    activirePowerMode   = exports.activirePowerMode    = ["","power modus aktivieren","power modus"],
+    zeit                = exports.zeit                 = ["","zeit", "wie spät ist es", "sag mir die zeit"],
+    befehle             = exports.befehle              = ["","befehle", "befehle anzeigen", "zeige befehle an"],
+    befehleDisable      = exports.befehleDisable       = ["","befehle aus","befehle-"],
+    singen              = exports.singen               = ["","singe für mich","singe"],
+    sprichEnglish       = exports.sprichEnglish        = ["","sprich englisch"],
+    wasAuchImmer        = exports.wasAuchImmer         = ["","was auch immer"],
+    wieAlt              = exports.wieAlt               = ["","wie alt bist du"," wie alt bist du?"]
+
+
+let theCommands = exports.arrayCommand = [
+  //english
   help,
   whatIsYourName,
   whoAreYou,
@@ -44,6 +69,27 @@ let theCommands = [
   speakGerman,
   whatEver,
   howOld,
+
+  //German
+  hilfe,
+  wasIstDeinName,
+  werBistDu,
+  wieGehtEsDir,
+  hallo,
+  musik,
+  stopMusik,
+  mirGehtEsgut,
+  sagEinenWitz,
+  werIstDeinErsteller,
+  werIstVoxny,
+  activirePowerMode,
+  zeit,
+  befehle,
+  befehleDisable,
+  singen,
+  sprichEnglish,
+  wasAuchImmer,
+  wieAlt,
 ]
 
 exports.allcommands = theCommands.toString()
